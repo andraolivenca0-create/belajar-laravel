@@ -21,7 +21,10 @@
                 <form action="{{route('post.destroy',$data->id)}}" method="post">
                     @csrf
                     @method('delete')
-                    <a href="{{route('post.edit',$data->id)}}" class="btn btn-warning">edit</a>
+                    <a href="{{route('post.edit',$data->id)}}" class="btn btn-sm btn-success">
+                        edit</a>
+                        <a href="{{route('post.edit',$data->id)}}" class="btn btn-warning">
+                        Show</a>
                     <button type="submit" class="btn btn-danger" onclick="return confirm('yakin ingin menghapus data?')">hapus</button>
             </tr>
             @endforeach

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\mycontroller;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BiodataController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -105,4 +106,10 @@ Route::get('post/create', [PostController::class, 'create'])->name('post.create'
 Route::post('post', [PostController::class, 'store'])->name('post.store');
 Route::get('post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');   
 Route::put('post/{id}', [PostController::class, 'update'])->name('post.update');
+Route::get('post/{id}', [PostController::class, 'show'])->name('post.show');
 Route::delete('post/{id}', [PostController::class, 'destroy'])->name('post.destroy');   
+Route::resource('produk', App\Http\Controllers\ProdukController::class)->middleware('auth');
+
+
+
+Route::resource('biodata', BiodataController::class);
