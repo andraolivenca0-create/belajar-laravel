@@ -1,21 +1,22 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class post extends Model
+class Post extends Model
 {
-    //table yang digunakan  untuk model ini adalah 'post'
-    //protected $table = 'post';
+    //secara otomatis model ini menganggap
+    // table yang digunakan adalah table 'posts'
 
-    //apa saja yang boleh di isi
+    // table yang digunakan untuk model ini adalah table 'post'
+    protected $table = 'post';
+
+    // apa aja yang boleh di isi
     public $fillable = ['title', 'content'];
 
-    //apa saja yang boleh di tampilkan
+    // apa aja yang boleh di tampilkan
     public $visible = ['id', 'title', 'content'];
 
-    //mengisi tanggal kapan dibuat dan kapan di update secara otomatis
+    // mengisi tanggal kapan dibuat dan kapan di update secara otomatis
     public $timestamps = true;
 }
- 
