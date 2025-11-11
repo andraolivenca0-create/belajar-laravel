@@ -1,5 +1,3 @@
-
-
 <?php
 namespace App\Http\Controllers;
 
@@ -26,7 +24,7 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'nama_produk' => 'required|min:5',
             'harga'       => 'required',
-            'stok'        => 'required|',
+            'stok'        => 'required',
         ]);
 
         $produk              = new Produk();
@@ -63,13 +61,24 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'nama_produk' => 'required|min:5',
             'harga'       => 'required',
-            'stok'        => 'required|',
+            'stok'        => 'required',
         ]);
 
         $produk              = Produk::findOrFail($id);
         $produk->nama_produk = $request->nama_produk;
         $produk->harga       = $request->harga;
         $produk->stok        = $request->stok;
+        // if ($request->hasFile('image')) {
+        //     // menghapus foto lama
+        //     Storage::disk('public')->delete($produk->image);
+
+        //     // upload foto baru
+        //     $file       = $request->file('image');
+        //     $randomName = Str::random(20) . '.' . $file->getClientOriginalExtension();
+        //     $path       = $file->storeAs('produks', $randomName, 'public');
+        //     // memasukan nama_produk image nya ke database
+        //     $produk->image = $path;
+        // }
         $produk->save();
         return redirect()->route('produk.index');
 
